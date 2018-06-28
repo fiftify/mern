@@ -15,11 +15,21 @@ const User = require ('../../models/User');
 //@access   Public 
 
 router.get('/test', (req, res) => res.json({msg: "Users works"}));
-
+router.get('/', (req,res) => {
+    User.find({}).then((docs) => {
+        let users = docs.map(user => ({name:user.name,location:user.location,email:user.email,avatar: user.avatar}))
+        
+        res.render('userList', {users})
+        
+        //res.json(users);
+    })
+})
 //@route    GET api/users/register
 //@desc     Tests users routes
 //@access   Public 
-
+router.get('/register', (req,res) => {
+    res.render('register');
+})
 router.post('/register', (req, res) => {
     //looks for repeated email address
     User.findOne({email: req.body.email}).then(user => {
@@ -45,7 +55,7 @@ router.post('/register', (req, res) => {
                     if (err)throw err;
                     newUser.password = hash;
                     newUser.save()
-                        .then(user => res.json(user))
+                        .then(user => res.redirect('/api/users'))
                         .catch(err => console.log(err));
                 })
 

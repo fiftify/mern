@@ -1,0 +1,15 @@
+<%- include partials/head -%>
+    <div class="container">
+    <% for (let i =0; i<users.length; i++) { %>
+        
+            <div class="card">
+                <img src="<%- users[i].avatar -%>" width="180">
+                    <p><%- users[i].name -%></p>
+                    <p><%- users[i].location -%></p>
+                    <p><%- users[i].email -%></p>
+            </div>
+        
+    <% } %>
+    </div>
+</body>
+</html>

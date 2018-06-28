@@ -1,0 +1,17 @@
+<%- include partials/head -%>
+        <div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Register</h2>
+
+  <form class="login-container" action="/api/users/register" method="post">
+    <p><input type="text" placeholder="Name" name="name"></p>
+    <p><input type="text" placeholder="Location" name="location"></p>
+    <p><input type="email" placeholder="Email" name="email"></p>
+    <p><input type="password" placeholder="Password" name="password"></p>
+    <p><input type="text" placeholder="Avatar" name="avatar"></p>
+    <p><input type="submit"></p>
+  </form>
+</div>
+    </body>
+</html>
