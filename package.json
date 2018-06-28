@@ -20,6 +20,7 @@
     "validator": "^10.4.0"
   },
   "devDependencies": {
+    "gravatar": "^1.6.0",
     "nodemon": "^1.17.5"
   }
 }
