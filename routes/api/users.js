@@ -57,7 +57,9 @@ router.post('/register', (req, res) => {
 //@route    GET api/users/login
 //@desc    login return token
 //@access   Public 
-
+router.get('/login', (req,res) => {
+    res.render('login');
+})
 router.post('/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -78,12 +80,12 @@ router.post('/login', (req, res) => {
                 //sign token
                 jwt.sign(
                     payload, 
-                    key.secretOrKey,
+                    keys.secretOrKey,
                     {expiresIn: 3600},
                 (err, token)=>{
                     res.json({                    
                         success: true,
-                        token: 'Bearer'+ token
+                        token: 'Bearer: '+ token
                     });
                 });
             } else {
@@ -98,7 +100,7 @@ router.post('/login', (req, res) => {
 // @access private
 
 router.get (
-    '/current', passport.authenticate ('jwt', { session: false }), 
+    '/current', passport.authenticate ('jwt', { session: true }), 
     (req, res) => {
         res.json({
             id: req.user.id,
